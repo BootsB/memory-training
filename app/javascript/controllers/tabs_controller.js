@@ -3,12 +3,12 @@ import { Controller } from "@hotwired/stimulus"
 // Connects to data-controller="tabs"
 export default class extends Controller {
   connect() {
-    console.log("hello")
+
   }
   static targets = ["tab"];
 
   openTab(event) {
-    console.log("hello 2")
+    console.log("why aren't you working")
     const tabName = event.target.dataset.tab;
 
     // Hide all tab content

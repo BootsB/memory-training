@@ -1,57 +1,16 @@
 
-<div class="container mt-3 p-5" data-controller="tabs">
+<div class="container p-5" data-controller="tabs">
   <h1>Your Deck</h1>
-  <div class="tab">
-    <button class="tablinks" data-action="click->tabs#openTab" data-target="tabs.tab" data-tab="hearts">Hearts</button>
+  <div class="tab mb-3">
+    <button class="tablinks active" data-action="click->tabs#openTab" data-target="tabs.tab" data-tab="hearts">Hearts</button>
     <button class="tablinks" data-action="click->tabs#openTab" data-target="tabs.tab" data-tab="diamonds">Diamonds</button>
     <button class="tablinks" data-action="click->tabs#openTab" data-target="tabs.tab" data-tab="clubs">Clubs</button>
     <button class="tablinks" data-action="click->tabs#openTab" data-target="tabs.tab" data-tab="spades">Spades</button>
   </div>
 
-  <div class="tabcontent row" data-target="tabs.tab" data-tab="hearts">
-    <% @cards.where(suit: "hearts").each do |card| %>
-    <div class="playing-card col-sm-12 col-md-3 border mb-3 bg-white p-3">
-      <% user_association = card.associations.find_by(user: current_user) %>
-      <% if !user_association %>
-        <% user_association = Association.create!(user: current_user, card_id: card.id) %>
-      <% end %>
-      <p class="display-6"><%= card.jqka %><span class="ms-1"><%= card.icon %></span></p>
-      <div class="text-center pt-5">
-        <h3>P: <%= user_association && user_association.person ? user_association.person : '___' %></h3>
-        <h3>A: <%= user_association && user_association.action ? user_association.action : '___' %></h3>
-        <h3 class="mb-3">O: <%= user_association && user_association.object ? user_association.object : '___' %></h3>
-        <%= link_to 'Edit', edit_association_path(user_association, card_id: card.id), class: 'btn btn-primary' if user_association %>
-      </div>
-      <p class="display-6 text-end m-0"><%= card.jqka %><span class="ms-1"><%= card.icon %></span></p>
-    </div>
-  <% end %>
-  </div>
-
-    <div class="tabcontent row" data-target="tabs.tab" data-tab="clubs">
-      <% @cards.where(suit: "clubs").each do |card| %>
-      <div class="playing-card col-sm-12 col-md-3 border mb-3 bg-white p-3">
-        <% user_association = card.associations.find_by(user: current_user) %>
-        <% if !user_association %>
-          <% user_association = Association.create!(user: current_user, card_id: card.id) %>
-        <% end %>
-        <p class="display-6"><%= card.jqka %><span class="ms-1"><%= card.icon %></span></p>
-        <div class="text-center pt-5">
-          <h3>P: <%= user_association && user_association.person ? user_association.person : '___' %></h3>
-          <h3>A: <%= user_association && user_association.action ? user_association.action : '___' %></h3>
-          <h3 class="mb-3">O: <%= user_association && user_association.object ? user_association.object : '___' %></h3>
-          <%= link_to 'Edit', edit_association_path(user_association, card_id: card.id), class: 'btn btn-primary' if user_association %>
-        </div>
-        <p class="display-6 text-end m-0"><%= card.jqka %><span class="ms-1"><%= card.icon %></span></p>
-      </div>
-    <% end %>
-    </div>
-
-    <div class="tabcontent" data-target="tabs.tab" data-tab="clubs">
-      <!-- Content for Clubs tab -->
-    </div>
-
-    <div class="tabcontent" data-target="tabs.tab" data-tab="spades">
-      <!-- Content for Spades tab -->
-    </div>
+  <%= render partial: 'tab_content', locals: { suit: 'hearts', active: true } %>
+  <%= render partial: 'tab_content', locals: { suit: 'diamonds', active: false } %>
+  <%= render partial: 'tab_content', locals: { suit: 'clubs', active: false } %>
+  <%= render partial: 'tab_content', locals: { suit: 'spades', active: false } %>
   </div>
 </div>

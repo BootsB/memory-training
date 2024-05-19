@@ -24,4 +24,5 @@ class Card < ApplicationRecord
   }
   suits[suit]
   end
+
 end

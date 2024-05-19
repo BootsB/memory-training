@@ -5,6 +5,7 @@ class AssociationsController < ApplicationController
   def index
     @cards = Card.all
     @associations = current_user.associations
+    
   end
 
   def new
