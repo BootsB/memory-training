@@ -1,0 +1,11 @@
+<div class="container">
+  <h1>Enter the Person, Object and Action</h1>
+
+  <%= simple_form_for @association do |f| %>
+    <%= f.collection_select :card_id, @cards, :id, :suit_value, prompt: 'Choose a card', label: 'Card' %>
+    <%= f.input :person, label: 'Person' %>
+    <%= f.input :object, label: 'Object' %>
+    <%= f.input :action, label: 'Action' %>
+    <%= f.button :submit, 'Create Association' %>
+  <% end %>
+</div>

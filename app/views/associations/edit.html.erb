@@ -1,0 +1,21 @@
+<div class="container bg-white mt-3 p-4">
+  <h1>Edit details for <%= @association.card.suit_value %></h1>
+  <%= simple_form_for @association do |f| %>
+
+    <div class="field">
+      <%= f.input :person, label: 'Person' %>
+    </div>
+
+    <div class="field">
+      <%= f.input :action, label: 'Action' %>
+    </div>
+
+    <div class="field">
+      <%= f.input :object, label: 'Object' %>
+    </div>
+
+    <div class="actions">
+      <%= f.button :submit, "Update Association", class: "btn btn-primary" %>
+    </div>
+  <% end %>
+</div>
