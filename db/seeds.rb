@@ -4,7 +4,12 @@ User.destroy_all
 
 suits = ['hearts', 'diamonds', 'clubs', 'spades']
 values = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'Jack', 'Queen', 'King', 'Ace']
-
+icons = {
+  'hearts' => '♥',
+  'diamonds' => '♦',
+  'clubs' => '♣',
+  'spades' => '♠'
+}
 # Famous people with their actions and objects
 pao_associations = {
   hearts: [
@@ -74,7 +79,7 @@ puts "created example@example.co.uk"
 # Create cards
 suits.each do |suit|
   values.each_with_index do |value, index|
-    card = Card.create!(suit: suit, value: value)
+    card = Card.create!(suit: suit, value: value, icon: icons[suit])
     puts "created #{value} of #{suit.capitalize}"
 
     pao = pao_associations[suit.to_sym][index % pao_associations[suit.to_sym].length]
