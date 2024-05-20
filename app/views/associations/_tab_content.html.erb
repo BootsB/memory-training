@@ -1,18 +1,18 @@
 <div class="tabcontent row <%= 'active' if active %>" data-tabs-target="tab" data-tab="<%= suit %>">
   <% @cards.where(suit: suit).each do |card| %>
-    <div class="playing-card col-sm-12 col-md-3 border mb-3 bg-white p-3">
-      <% user_association = card.associations.find_by(user: current_user) %>
-      <% if !user_association %>
-        <% user_association = Association.create!(user: current_user, card_id: card.id) %>
-      <% end %>
-      <p class="display-6"><%= card.jqka %><span class="ms-1"><%= card.icon %></span></p>
-      <div class="text-center pt-4">
-        <h3>P: <%= user_association && user_association.person ? user_association.person : '___' %></h3>
-        <h3>A: <%= user_association && user_association.action ? user_association.action : '___' %></h3>
-        <h3 class="mb-3">O: <%= user_association && user_association.object ? user_association.object : '___' %></h3>
-        <%= link_to 'Edit', edit_association_path(user_association, card_id: card.id), class: 'btn btn-primary' if user_association %>
-      </div>
-      <p class="display-6 text-end m-0"><%= card.jqka %><span class="ms-1"><%= card.icon %></span></p>
+    <div class="playing-card col-sm-12 col-md-3 border bg-white p-3">
+        <% user_association = card.associations.find_by(user: current_user) %>
+        <% if !user_association %>
+          <% user_association = Association.create!(user: current_user, card_id: card.id) %>
+        <% end %>
+        <p class="display-6 text-start"><%= card.jqka %><span class="ms-1 <%= 'text-danger' if suit == "diamonds" || suit == "hearts" %>"><%= card.icon %></span></p>
+        <div class="text-center pt-5">
+          <h3>P: <%= user_association && user_association.person ? user_association.person : '___' %></h3>
+          <h3>A: <%= user_association && user_association.action ? user_association.action : '___' %></h3>
+          <h3 class="mb-3">O: <%= user_association && user_association.object ? user_association.object : '___' %></h3>
+          <%= link_to 'Edit', edit_association_path(user_association, card_id: card.id), class: 'btn btn-primary' if user_association %>
+        </div>
+        <p class="display-6 text-end m-0"><%= card.jqka %><span class="ms-1 <%= 'text-danger' if suit == "diamonds" || suit == "hearts" %>"><%= card.icon %></span></p>
     </div>
   <% end %>
 </div>

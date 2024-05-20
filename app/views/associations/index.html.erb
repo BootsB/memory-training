@@ -1,5 +1,5 @@
 
-<div class="container p-5" data-controller="tabs">
+<div class="container p-5 overflow-hidden text-center" data-controller="tabs">
   <h1>Your Deck</h1>
   <div class="tab mb-3">
     <button class="tablinks active" data-action="click->tabs#openTab" data-target="tabs.tab" data-tab="hearts">Hearts</button>
@@ -7,10 +7,10 @@
     <button class="tablinks" data-action="click->tabs#openTab" data-target="tabs.tab" data-tab="clubs">Clubs</button>
     <button class="tablinks" data-action="click->tabs#openTab" data-target="tabs.tab" data-tab="spades">Spades</button>
   </div>
-
+  
   <%= render partial: 'tab_content', locals: { suit: 'hearts', active: true } %>
   <%= render partial: 'tab_content', locals: { suit: 'diamonds', active: false } %>
   <%= render partial: 'tab_content', locals: { suit: 'clubs', active: false } %>
   <%= render partial: 'tab_content', locals: { suit: 'spades', active: false } %>
-  </div>
+
 </div>
