@@ -27,5 +27,6 @@ export default class extends Controller {
 
     })
     this.buttonTarget.innerHTML = "Test your skills"
+    
   }
 }
