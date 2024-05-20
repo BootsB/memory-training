@@ -3,4 +3,13 @@
   bottom: 16px;
   right: 16px;
   z-index: 1000;
+  border-radius: 8px;
+  background-color: rgb(245, 245, 245);
+}
+.flash-info {
+  border: 2px solid #ffe711;
+}
+
+.flash-warning {
+  border: 2px solid #FD1015;
 }

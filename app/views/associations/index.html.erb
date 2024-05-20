@@ -1,13 +1,15 @@
 
 <div class="container p-5 overflow-hidden text-center" data-controller="tabs">
-  <h1>Your Deck</h1>
-  <div class="tab mb-3">
-    <button class="tablinks active" data-action="click->tabs#openTab" data-target="tabs.tab" data-tab="hearts">Hearts</button>
-    <button class="tablinks" data-action="click->tabs#openTab" data-target="tabs.tab" data-tab="diamonds">Diamonds</button>
-    <button class="tablinks" data-action="click->tabs#openTab" data-target="tabs.tab" data-tab="clubs">Clubs</button>
-    <button class="tablinks" data-action="click->tabs#openTab" data-target="tabs.tab" data-tab="spades">Spades</button>
+  <div class=" p-3 mb-3">
+    <h1>Your Deck</h1>
+    <div class="tab mt-3 mb-2">
+      <button class="tablinks active" data-action="click->tabs#openTab" data-target="tabs.tab" data-tab="hearts">Hearts</button>
+      <button class="tablinks" data-action="click->tabs#openTab" data-target="tabs.tab" data-tab="diamonds">Diamonds</button>
+      <button class="tablinks" data-action="click->tabs#openTab" data-target="tabs.tab" data-tab="clubs">Clubs</button>
+      <button class="tablinks" data-action="click->tabs#openTab" data-target="tabs.tab" data-tab="spades">Spades</button>
+    </div>
   </div>
-  
+
   <%= render partial: 'tab_content', locals: { suit: 'hearts', active: true } %>
   <%= render partial: 'tab_content', locals: { suit: 'diamonds', active: false } %>
   <%= render partial: 'tab_content', locals: { suit: 'clubs', active: false } %>

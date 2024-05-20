@@ -1,6 +1,21 @@
 <div class="banner">
   <div class="container">
-    <h2 class="display-1">♣♥♠♦</h1>
+    <div class="mt-5 container d-flex justify-content-center">
+    <div class="suit-card-group ">
+        <div class="suit-card">
+          <h1>J♥</h1>
+        </div>
+        <div class="suit-card">
+          <h1>5♦</h1>
+        </div>
+        <div class="suit-card">
+          <h1>J♣</h1>
+        </div>
+        <div class="suit-card">
+          <h1>2♠</h1>
+        </div>
+    </div>
+  </div>
     <h1>Memorise a deck of cards</h1>
     <p>
       Assign each card a unique <strong>P</strong>erson, <strong>A</strong>ction & <strong>O</strong>bject.
@@ -9,6 +24,66 @@
       <br>
       with the Action of card 2 plus the Object of card 3 all into 1 "story" of 3 cards.
     </p>
-    <%= link_to "Create a PAO Deck", associations_path, class: "btn btn-secondary" %>
+    <%= link_to "Create a PAO Deck", associations_path, class: "btn btn-info" %>
+  </div>
+</div>
+<div class="container mt-3">
+  <div class="row">
+
+    <div class="mt-3 col-lg-6 col-sm-12 mb-4">
+      <%= link_to associations_path, class: "card-link" do %>
+      <div class="card bg-white link-border text-center pt-3 pb-3">
+        <div class="card-body">
+          <div class="card-title">
+            <h1 class="text-secondary m-3">♣♥♠♦</h1>
+            <h4 class="text-primary header4">Learn Memorising Playing Cards</h4>
+          </div>
+          <p>Start assigning each card a Person Action and Object so you can start memorising cards</p>
+        </div>
+      </div>
+      <% end %>
+    </div>
+
+    <div class="mt-3 col-lg-6 col-sm-12 mb-4">
+      <%= link_to associations_path, class: "card-link" do %>
+      <div class="card bg-white link-border text-center pt-3 pb-3">
+        <div class="card-body">
+          <div class="card-title">
+            <h1 class="text-secondary m-3">♣♥♠♦</h1>
+            <h4 class="text-primary header4">Practice Memorising Playing Cards</h4>
+          </div>
+          <p>Put your learning into practice and try memorising the order of playing cards</p>
+        </div>
+      </div>
+      <% end %>
+    </div>
+
+    <div class="mt-1 col-lg-6 col-sm-12 mb-5">
+      <%= link_to associations_path, class: "card-link" do %>
+      <div class="card bg-white link-border text-center pt-3 pb-3">
+        <div class="card-body">
+          <div class="card-title">
+            <h1 class="text-secondary m-3">9128327</h1>
+            <h4 class="text-primary header4">Learn Memorising Numbers</h4>
+          </div>
+          <p>Start assigning each card a Person Action and Object so you can start memorising cards</p>
+        </div>
+      </div>
+      <% end %>
+    </div>
+
+    <div class="mt-1 col-lg-6 col-sm-12 mb-5">
+      <%= link_to associations_path, class: "card-link" do %>
+      <div class="card bg-white link-border text-center pt-3 pb-3">
+        <div class="card-body">
+          <div class="card-title">
+            <h1 class="text-secondary m-3">9128327</h1>
+            <h4 class="text-primary header4">Practice Memorising Numbers</h4>
+          </div>
+          <p>Start assigning each card a Person Action and Object so you can start memorising cards</p>
+        </div>
+      </div>
+      <% end %>
+    </div>
   </div>
 </div>

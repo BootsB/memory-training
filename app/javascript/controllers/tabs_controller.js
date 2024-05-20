@@ -8,7 +8,7 @@ export default class extends Controller {
   static targets = ["tab"];
 
   openTab(event) {
-    console.log("why aren't you working")
+    console.log("tabs online")
     const tabName = event.target.dataset.tab;
 
     // Hide all tab content
