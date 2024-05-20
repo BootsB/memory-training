@@ -4,40 +4,81 @@ User.destroy_all
 
 suits = ['hearts', 'diamonds', 'clubs', 'spades']
 values = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'Jack', 'Queen', 'King', 'Ace']
-dota_heroes = [
-  'Anti-Mage', 'Axe', 'Bane', 'Bloodseeker', 'Crystal Maiden', 'Drow Ranger',
-  'Earthshaker', 'Juggernaut', 'Mirana', 'Morphling', 'Shadow Fiend', 'Phantom Lancer',
-  'Puck', 'Pudge', 'Razor', 'Sand King', 'Storm Spirit', 'Sven', 'Tiny', 'Vengeful Spirit',
-  'Windranger', 'Zeus', 'Kunkka', 'Lina', 'Lion', 'Shadow Shaman', 'Slardar', 'Tidehunter',
-  'Witch Doctor', 'Lich', 'Riki', 'Enigma', 'Tinker', 'Sniper', 'Necrophos', 'Warlock',
-  'Beastmaster', 'Queen of Pain', 'Venomancer', 'Faceless Void', 'Wraith King', 'Death Prophet',
-  'Phantom Assassin', 'Pugna', 'Templar Assassin', 'Viper', 'Luna', 'Dragon Knight', 'Dazzle',
-  'Clockwerk', 'Leshrac', 'Nature\'s Prophet', 'Lifestealer', 'Dark Seer', 'Clinkz', 'Omniknight',
-  'Enchantress', 'Huskar', 'Night Stalker', 'Broodmother', 'Bounty Hunter', 'Weaver', 'Jakiro',
-  'Batrider', 'Chen', 'Spectre', 'Ancient Apparition', 'Doom', 'Ursa', 'Spirit Breaker',
-  'Gyrocopter', 'Alchemist', 'Invoker', 'Silencer', 'Outworld Devourer', 'Lycan', 'Brewmaster',
-  'Shadow Demon', 'Lone Druid', 'Chaos Knight', 'Meepo', 'Treant Protector', 'Ogre Magi',
-  'Undying', 'Rubick', 'Disruptor', 'Nyx Assassin', 'Naga Siren', 'Keeper of the Light',
-  'Io', 'Visage', 'Slark', 'Medusa', 'Troll Warlord', 'Centaur Warrunner', 'Magnus', 'Timbersaw',
-  'Bristleback', 'Tusk', 'Skywrath Mage', 'Abaddon', 'Elder Titan', 'Legion Commander',
-  'Techies', 'Ember Spirit', 'Earth Spirit', 'Underlord', 'Terrorblade', 'Phoenix', 'Oracle',
-  'Winter Wyvern', 'Arc Warden', 'Monkey King', 'Dark Willow', 'Pangolier', 'Grimstroke',
-  'Mars', 'Snapfire', 'Void Spirit', 'Hoodwink', 'Dawnbreaker', 'Marci', 'Primal Beast',
-  'Muerta'
-]
 
-suits.each do |suit|
-  values.each do |value|
-    Card.create!(suit: suit, value: value)
-    puts "created #{value} of #{suit.capitalize}"
-  end
-end
-
+# Famous people with their actions and objects
+pao_associations = {
+  hearts: [
+    { person: 'Bristleback', action: 'Spitting', object: 'Goo' },
+    { person: 'Centaur', action: 'Pulling', object: 'Cart' },
+    { person: 'Lifestealer', action: 'Crawling', object: 'Chains' },
+    { person: 'Mars', action: 'Bashing', object: 'Shield' },
+    { person: 'Primal Beast', action: 'Crying', object: 'Baby Bottle' },
+    { person: 'Pudge', action: 'Rotting', object: 'Hook' },
+    { person: 'Slardar', action: 'Crushing', object: 'Cloud' },
+    { person: 'Sven', action: 'Superman-ing', object: 'Sword' },
+    { person: 'Tiny', action: 'Tossing', object: 'Tree' },
+    { person: 'Tusk', action: 'Punching', object: 'Ice shards' },
+    { person: 'Dawnbreaker', action: 'Swinging', object: 'Hammer' },
+    { person: 'Wraith King', action: 'Respawning', object: 'Skeletons' },
+    { person: 'Earth Spirit', action: 'Rolling', object: 'Boulder' }
+  ],
+  diamonds: [
+    { person: 'Crystal Maiden', action: 'Freezing', object: 'Snowman' },
+    { person: 'Grimstroke', action: 'Painting', object: 'Paintbrush' },
+    { person: 'Lion', action: 'Fingering', object: 'Green Glove' },
+    { person: 'Necrophos', action: 'Shrouding', object: 'Scythe' },
+    { person: 'Puck', action: 'Jaunting', object: 'Coil' },
+    { person: 'Pugna', action: 'Sucking', object: 'Nether Ward' },
+    { person: 'Rubick', action: 'Lifting', object: 'Staff' },
+    { person: 'Shadow Shaman', action: 'Tongue-ing', object: 'Snakes' },
+    { person: 'Silencer', action: 'Silencing', object: 'Glaives' },
+    { person: 'Zeus', action: 'Jumping', object: 'Coin' },
+    { person: 'Queen of Pain', action: 'Whipping', object: 'Whip' },
+    { person: 'Oracle', action: 'Dunking', object: 'Water ball' },
+    { person: 'Storm Spirit', action: 'Zipping', object: 'Static Remnant' }
+  ],
+  clubs: [
+    { person: 'Bane', action: 'Holding', object: 'Cheese' },
+    { person: 'Batrider', action: 'Riding', object: 'Lasso' },
+    { person: 'Dark Seer', action: 'Vacuuming', object: 'Wall' },
+    { person: 'Dark Willow', action: 'Terrorizing', object: 'Bramble' },
+    { person: 'Invoker', action: 'Juggling', object: 'QWE Balls' },
+    { person: 'IO', action: 'Tethering', object: 'Spirits' },
+    { person: 'Magnus', action: 'Empowering', object: 'Horn' },
+    { person: 'Pangolier', action: 'Swashbuckling', object: 'Sword' },
+    { person: 'Phoenix', action: 'Diving', object: 'Egg' },
+    { person: 'Snapfire', action: 'Kissing', object: 'Cookie' },
+    { person: 'Broodmother', action: 'Spinning', object: 'Webs' },
+    { person: 'Sand King', action: 'Burrowing', object: 'Sand' },
+    { person: 'Void Spirit', action: 'Stepping', object: 'Pogo' }
+  ],
+  spades: [
+    { person: 'Bounty Hunter', action: 'Tracking', object: 'Shuriken' },
+    { person: 'Faceless Void', action: 'Backtracking', object: 'Mace' },
+    { person: 'Hoodwink', action: 'Scurrying', object: 'Boomerang' },
+    { person: 'Juggernaut', action: 'Spinning', object: 'Healing Ward' },
+    { person: 'Meepo', action: 'Digging', object: 'Shovel' },
+    { person: 'Naga Siren', action: 'Singing', object: 'Net' },
+    { person: 'Phantom Lancer', action: 'Rushing', object: 'Lance' },
+    { person: 'Riki', action: 'Sleeping', object: 'Sleeping Dart' },
+    { person: 'Sniper', action: 'Shooting', object: 'Rifle' },
+    { person: 'Ursa', action: 'Enraging', object: 'Claws' },
+    { person: 'Templar Assassin', action: 'Melding', object: 'Trap' },
+    { person: 'Monkey King', action: 'Springing', object: 'Quaterstaff' },
+    { person: 'Ember Spirit', action: 'Fisting', object: 'Flames' }
+  ]
+}
+# Create a user
 user = User.create!(email: "example@example.co.uk", password: "password")
 puts "created example@example.co.uk"
+# Create cards
+suits.each do |suit|
+  values.each_with_index do |value, index|
+    card = Card.create!(suit: suit, value: value)
+    puts "created #{value} of #{suit.capitalize}"
 
-Card.all.each_with_index do |card, index|
-  Association.create!(user: user, card: card, person: dota_heroes[index % dota_heroes.length])
+    pao = pao_associations[suit.to_sym][index % pao_associations[suit.to_sym].length]
+    Association.create!(user: user, card: card, person: pao[:person], action: pao[:action], object: pao[:object])
+    puts "assigned PAO for #{value} of #{suit.capitalize}"
+  end
 end
-
-puts "Associations with Dota heroes created for each card"
