@@ -17,16 +17,16 @@ export default class extends Controller {
 
   displayDeck(deck) {
     this.deckTarget.innerHTML = ''
-    deck.forEach(card => {
+    deck.forEach((card, index) => {
       const cardElement = document.createElement('div')
       cardElement.classList.add('short-card', 'border', 'bg-white')
       cardElement.innerHTML = `
         <p class="display-6 text-center">${card.value}<span class="ms-1 ${card.suit == 'diamonds' || card.suit == 'hearts' ? 'text-danger' : ''}">${card.icon}</span></p>
-      `
+        `
       this.deckTarget.appendChild(cardElement)
 
     })
     this.buttonTarget.innerHTML = "Test your skills"
-    
+
   }
 }
